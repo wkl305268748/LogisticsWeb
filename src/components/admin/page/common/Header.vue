@@ -20,7 +20,7 @@
         data() {
             return {
                 name: '未命名',
-                username: localStorage.getItem('ms_username'),
+                username: localStorage.getItem('admin_username'),
                 img: '',
                 loadingParam: {
                     token: localStorage.getItem('token')
@@ -38,7 +38,7 @@
         methods:{
             handleCommand(command) {
                 if(command == 'loginout'){
-                    localStorage.removeItem('ms_username')
+                    localStorage.removeItem('admin_username')
                     localStorage.removeItem('token')
                     this.$router.push('/login');
                 }
@@ -55,7 +55,7 @@
         font-size: 22px;
         line-height: 70px;
         color: #fff;
-        background: #2c3e50;
+        background: #16a085;
     }
     .header .logo{
         float: left;

@@ -17,10 +17,6 @@
                         <el-input v-model="ruleForm.password" placeholder="请输入密码" type="password"></el-input>
                     </el-form-item>
 
-                    <el-form-item label="公司名称" prop="company">
-                        <el-input v-model="ruleForm.company" placeholder="请输入公司名称"></el-input>
-                    </el-form-item>
-
                     <el-form-item label="账户金额（元）" prop="money">
                         <el-input-number v-model="ruleForm.money" ></el-input-number>
                     </el-form-item>

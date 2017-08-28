@@ -31,3 +31,21 @@ export function updatePassword(params) {
         params
     });
 }
+
+//注册
+
+export function sendRegisterSms(params) {
+    return fetch({
+        url: '/v1/user/customer/send_register_sms',
+        method: 'post',
+        params
+    });
+}
+
+export function registerSms(params) {
+    return fetch({
+        url: '/v1/user/customer/register_sms',
+        method: 'post',
+        params
+    });
+}

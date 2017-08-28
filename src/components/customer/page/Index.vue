@@ -22,9 +22,19 @@
                         <el-row>
                             <el-col :span="2"><div style="height:80px; background:#9b59b6"></div></el-col>
                             <el-col :span="16" style="padding: 10px">
-                                <p>总待处理订单数：</p>
+                                <p>待处理订单数：</p>
                                 <p style="margin-top:10px; font-size:25px;"><router-link to="/customer/home/order" style="color:#50bfff">{{all.order_place}}</router-link></p>
-
+                            </el-col>
+                        </el-row>
+                    </el-card>
+                </el-col>
+                <el-col :span="6">
+                    <el-card class="box-card" :body-style="{ padding: '0px' }">
+                        <el-row>
+                            <el-col :span="2"><div style="height:80px; background:#2ecc71"></div></el-col>
+                            <el-col :span="16" style="padding: 10px">
+                                <p>已处理订单数：</p>
+                                <p style="margin-top:10px; font-size:25px;"><router-link to="/customer/home/order" style="color:#50bfff">{{all.order_taking}}</router-link></p>
                             </el-col>
                         </el-row>
                     </el-card>
@@ -34,7 +44,7 @@
                         <el-row>
                             <el-col :span="2"><div style="height:80px; background:#f1c40f"></div></el-col>
                             <el-col :span="16" style="padding: 10px">
-                                <p>总已签收订单数：</p>
+                                <p>已签收订单数：</p>
                                 <p style="margin-top:10px; font-size:25px;"><router-link to="/customer/home/order" style="color:#50bfff">{{all.order_sign}}</router-link></p>
                             </el-col>
                         </el-row>

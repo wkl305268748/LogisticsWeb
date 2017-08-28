@@ -30,55 +30,19 @@
                         title: '首页'
                     },
                     {
-                        icon: 'el-icon-date',
-                        index: '2',
-                        title: '车队管理',
-                        subs: [
-                            {
-                                index: '/customer/home/driver',
-                                title: '司机管理'
-                            },
-                            {
-                                index: '/customer/home/car',
-                                title: '车辆管理'
-                            }
-                        ]
-                    },
-                    {
-                        icon: 'el-icon-document',
+                        icon: 'el-icon-plus',
                         index: '/customer/home/order/add',
                         title: '创建运单',
                     },
                     {
-                        icon: 'el-icon-document',
-                        index: '/customer/home/order',
-                        title: '运单处理',
-                    },
-                    {
-                        icon: 'el-icon-picture',
-                        index: '/customer/home/profit',
-                        title: '财务管理'
-                    },
-                    {
                         icon: 'el-icon-date',
-                        title: '账户管理',
-                        subs: [
-                            {
-                                icon: 'el-icon-star-on',
-                                index: '/customer/home/account',
-                                title: '个人中心'
-                            },
-                            {
-                                icon: 'el-icon-plus',
-                                index: '/customer/home/recharge',
-                                title: '账户充值'
-                            }
-                        ]
+                        index: '/customer/home/order',
+                        title: '我的运单',
                     },
                     {
-                        icon: 'el-icon-plus',
-                        index: '/customer/home/system/config',
-                        title: '系统设置'
+                        icon: 'el-icon-message',
+                        index: '/customer/home/account',
+                        title: '个人设置',
                     }
                 ]
             }

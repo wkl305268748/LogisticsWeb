@@ -35,8 +35,13 @@
                         title: '客户账户管理',
                     },
                     {
+                        icon: 'el-icon-share',
+                        index: '/admin/home/company',
+                        title: '物流公司账户管理',
+                    },
+                    {
                         icon: 'el-icon-document',
-                        index: '/admin/home/order/customer',
+                        index: '/admin/home/order',
                         title: '客户运单查看',
                     },
                     {

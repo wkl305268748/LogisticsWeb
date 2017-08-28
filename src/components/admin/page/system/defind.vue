@@ -14,7 +14,7 @@
     </el-row>
 </template>
 <script>
-    import SystemManager from "../../../component/system/SystemManager.vue";
+    import SystemManager from "../../../public/system/SystemManager.vue";
     import { getDefindTypeAll } from '@/api/system';
 
 

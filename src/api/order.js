@@ -31,6 +31,14 @@ export function getOrder(id) {
     });
 }
 
+export function deleteOrder(id) {
+    return fetch({
+        url: '/v1/order/'+id,
+        method: 'delete'
+    });
+}
+
+
 export function addCustomerOrder(params) {
     return fetch({
         url: '/v1/order/customer',

@@ -15,9 +15,9 @@ export function getCustomerAll(params) {
     });
 }
 
-export function getOrderCustomer() {
+export function getOrderCompany() {
     return fetch({
-        url: '/v1/order/count/order/customer',
+        url: '/v1/order/count/order/company',
         method: 'get'
     });
 }
@@ -32,6 +32,23 @@ export function getOrderDay7() {
 export function getCustomerOrderDay7(params) {
     return fetch({
         url: '/v1/order/count/customer/order/day7',
+        method: 'get',
+        params
+    });
+}
+
+//物流公司统计
+export function getCompanyAll(params) {
+    return fetch({
+        url: '/v1/order/count/company/all',
+        method: 'get',
+        params
+    });
+}
+
+export function getCompanyOrderDay7(params) {
+    return fetch({
+        url: '/v1/order/count/company/order/day7',
         method: 'get',
         params
     });

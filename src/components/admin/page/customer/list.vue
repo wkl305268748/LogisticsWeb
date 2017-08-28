@@ -20,11 +20,6 @@
                 </el-table-column>
                 <el-table-column prop="user.username" label="账户"/>
                 <el-table-column prop="userInfo.nickname" label="昵称"/>
-                <el-table-column label="公司名称">
-                    <template scope="scope">
-                        <el-tag type="info">{{scope.row.userInfo.company}}</el-tag>
-                    </template>
-                </el-table-column>
                 <el-table-column
                     label="账户余额" width="180">
                     <template scope="scope">

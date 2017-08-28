@@ -23,10 +23,10 @@
                 <el-col :span="6">
                     <el-card class="box-card" :body-style="{ padding: '0px' }">
                         <el-row>
-                            <el-col :span="2"><div style="height:80px; background:#3498db"></div></el-col>
+                            <el-col :span="2"><div style="height:80px; background:#9b59b6"></div></el-col>
                             <el-col :span="16" style="padding: 10px">
-                                <p>总订单数：</p>
-                                <p style="margin-top:10px; font-size:25px;"><router-link to="/admin/home/order/customer" style="color:#50bfff">{{all.order_all}}</router-link></p>
+                                <p>物流公司账户总数量：</p>
+                                <p style="margin-top:10px; font-size:25px;"><router-link to="/admin/home/company" style="color:#50bfff">{{all.company}}</router-link></p>
                             </el-col>
                         </el-row>
                     </el-card>
@@ -34,11 +34,10 @@
                 <el-col :span="6">
                     <el-card class="box-card" :body-style="{ padding: '0px' }">
                         <el-row>
-                            <el-col :span="2"><div style="height:80px; background:#9b59b6"></div></el-col>
+                            <el-col :span="2"><div style="height:80px; background:#3498db"></div></el-col>
                             <el-col :span="16" style="padding: 10px">
-                                <p>总待处理订单数：</p>
-                                <p style="margin-top:10px; font-size:25px;"><router-link to="/admin/home/order/customer" style="color:#50bfff">{{all.order_place}}</router-link></p>
-
+                                <p>总订单数：</p>
+                                <p style="margin-top:10px; font-size:25px;"><router-link to="/admin/home/order" style="color:#50bfff">{{all.order_all}}</router-link></p>
                             </el-col>
                         </el-row>
                     </el-card>
@@ -49,7 +48,7 @@
                             <el-col :span="2"><div style="height:80px; background:#f1c40f"></div></el-col>
                             <el-col :span="16" style="padding: 10px">
                                 <p>总已签收订单数：</p>
-                                <p style="margin-top:10px; font-size:25px;"><router-link to="/admin/home/order/customer" style="color:#50bfff">{{all.order_sign}}</router-link></p>
+                                <p style="margin-top:10px; font-size:25px;"><router-link to="/admin/home/order" style="color:#50bfff">{{all.order_sign}}</router-link></p>
                             </el-col>
                         </el-row>
                     </el-card>
@@ -78,7 +77,7 @@
 </template>
 
 <script>
-    import { getAll,getOrderCustomer,getOrderDay7 } from '@/api/order/count.js'
+    import { getAll,getOrderCompany,getOrderDay7 } from '@/api/order/count.js'
     import echarts from 'echarts'
     require('echarts/theme/macarons');
 
@@ -148,7 +147,7 @@
                 });
             },
             initCustomerOrder(){
-                getOrderCustomer().then(response => {
+                getOrderCompany().then(response => {
                     this.order_customer = response.data;
 
                     var myChart = echarts.init(document.getElementById('customer_order'),'macarons');
