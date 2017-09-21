@@ -63,3 +63,34 @@ export function getConfigList(params) {
         params
     });
 }
+//版本管理
+export function getVersionNewest(params) {
+    return fetch({
+        url: '/v1/system/version/newest',
+        method: 'get',
+        params
+    });
+}
+
+export function addVersion(params) {
+    return fetch({
+        url: '/v1/system/version',
+        method: 'post',
+        params
+    });
+}
+
+export function deleteVersion(id) {
+    return fetch({
+        url: '/v1/system/version/'+id,
+        method: 'delete'
+    });
+}
+
+export function getVersionList(params) {
+    return fetch({
+        url: '/v1/system/version/page',
+        method: 'get',
+        params
+    });
+}

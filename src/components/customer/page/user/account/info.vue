@@ -138,6 +138,7 @@
                     this.userInfoForm = response.data.userInfo;
                     this.userForm = response.data.user;
                     this.userInfoForm.token = localStorage.getItem('customer_token');
+                    this.userInfoForm.birthday = parseTime(this.userInfoForm.birthday,"{y}/{m}/{d}");
                     this.Loading = false;
                 });
 

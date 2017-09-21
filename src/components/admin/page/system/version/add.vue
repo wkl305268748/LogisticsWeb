@@ -1,53 +1,47 @@
 <template>
     <el-row>
         <el-breadcrumb separator="/">
-            <el-breadcrumb-item :to="{ path: '../../home' }">首页</el-breadcrumb-item>
-            <el-breadcrumb-item :to="{ path: '../company' }">物流公司户管理</el-breadcrumb-item>
-            <el-breadcrumb-item>增加账户</el-breadcrumb-item>
+            <el-breadcrumb-item :to="{ path: '../../../home' }">首页</el-breadcrumb-item>
+            <el-breadcrumb-item :to="{ path: '../system/version' }">版本管理</el-breadcrumb-item>
+            <el-breadcrumb-item>增加版本</el-breadcrumb-item>
         </el-breadcrumb>
 
         <el-col style="margin-top: 50px" :span="12">
             <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="120px" class="demo-ruleForm">
 
-                    <el-form-item label="用户名" prop="username">
-                        <el-input v-model="ruleForm.username" placeholder="请输入用户名"></el-input>
-                    </el-form-item>
-
-                    <el-form-item label="密码" prop="password">
-                        <el-input v-model="ruleForm.password" placeholder="请输入密码" type="password"></el-input>
-                    </el-form-item>
-
-                    <el-form-item label="公司名称" prop="company">
-                        <el-input v-model="ruleForm.company" placeholder="请输入公司名称"></el-input>
-                    </el-form-item>
-
-                    <el-form-item label="账户金额（元）" prop="money">
-                        <el-input-number v-model="ruleForm.money" ></el-input-number>
-                    </el-form-item>
-
-                    <el-form-item label="昵称">
-                        <el-input v-model="ruleForm.nickname" ></el-input>
-                    </el-form-item>
-
-                    <el-form-item label="性别">
-                        <el-radio-group v-model="ruleForm.sex">
-                            <el-radio class="radio" label="男"></el-radio>
-                            <el-radio class="radio" label="女"></el-radio>
+                    <el-form-item label="版本类型" prop="type">
+                        <el-radio-group v-model="ruleForm.type">
+                            <el-radio-button label="customer_android">客户端</el-radio-button>
+                            <el-radio-button label="driver_android">司机端</el-radio-button>
                         </el-radio-group>
                     </el-form-item>
 
-                    <el-form-item label="头像">
+                    <el-form-item label="版本号" prop="version_number">
+                        <el-input-number v-model="ruleForm.version_number"></el-input-number>
+                    </el-form-item>
+
+                    <el-form-item label="版本名称" prop="version">
+                        <el-input v-model="ruleForm.version" ></el-input>
+                    </el-form-item>
+
+                    <el-form-item label="版本日志">
+                        <el-input v-model="ruleForm.changelog"
+                                  type="textarea"
+                                  :rows="3"
+                                  placeholder="请输入日志内容"></el-input>
+                    </el-form-item>
+
+                    <el-form-item label="APP上传" prop="url">
                         <el-upload
                             class="avatar-uploader"
                             action="http://upload-z2.qiniu.com"
                             :data="uploadToken"
                             :show-file-list="false"
                             :on-success="handleAvatarSuccess"
-                            :before-upload="beforeAvatarUpload"
                             :on-progress="progressUpload">
-                            <img v-if="ruleForm.img" :src="ruleForm.img" class="avatar">
-                            <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+                            <el-button size="small" type="primary">点击上传</el-button>
                         </el-upload>
+                        <el-input v-model="ruleForm.url" :disabled="true"/><br/><br/>
                         <el-progress :text-inside="true" :stroke-width="18" :percentage="imagePercente"></el-progress>
                     </el-form-item>
 
@@ -61,33 +55,28 @@
     </el-row>
 </template>
 <script>
-    import { addCompany } from '@/api/user/manager.js';
+    import { addVersion } from '@/api/system';
     import { getUploadToken } from '@/api/util.js';
 
     export default {
         data() {
             return {
                 ruleForm: {
-                    username: '',
-                    password: '',
-                    nickname: '',
-                    sex: '',
-                    img: 'http://otj3hc8no.bkt.clouddn.com/FgWThEudVEA-ehnqs864frvaVF3T',
-                    company: '',
-                    money: 0,
+                    type: 'customer_android',
+                    version: '',
+                    version_number: 0,
+                    changelog: '',
+                    url: '',
                 },
                 rules: {
-                    username: [
-                        {required: true, message: '请输入用户名'}
+                    version: [
+                        {required: true, message: '请输入版本名称'}
                     ],
-                    password: [
-                        {required: true, message: '请输入密码'}
+                    url: [
+                        {required: true, message: '请上传'}
                     ],
-                    company: [
-                        {required: true, message: '请输入公司名称'}
-                    ],
-                    money: [
-                        {required: true, message: '请输入金额'}
+                    version_number: [
+                        {required: true, message: '请输入版本号'}
                     ]
                 },
                 listLoading: false,
@@ -111,13 +100,13 @@
                 this.$refs[formName].validate((valid) => {
                     if (valid) {
                         this.listLoading = true;
-                        addCompany(this.ruleForm).then(response => {
+                        addVersion(this.ruleForm).then(response => {
                             this.listLoading = false;
                             this.$message({
                                 type: 'success',
                                 message: '添加成功!'
                             });
-                            this.$router.push('/admin/home/company');
+                            this.$router.push('/admin/home/system/version');
                         },
                         error =>{
                             this.listLoading = false;
@@ -128,20 +117,7 @@
                 });
             },
             handleAvatarSuccess(res, file) {
-                this.ruleForm.img = 'http://otj3hc8no.bkt.clouddn.com/'+ res.key;
-            },
-            beforeAvatarUpload(file) {
-                const isJPG = file.type === 'image/jpeg';
-                const isPNG = file.type === 'image/png';
-                const isLt2M = file.size / 1024 / 1024 < 2;
-
-                if (!isJPG && !isPNG) {
-                    this.$message.error('上传头像图片只能是 JPG/PNG 格式!');
-                }
-                if (!isLt2M) {
-                    this.$message.error('上传头像图片大小不能超过 2MB!');
-                }
-                return isJPG && isLt2M;
+                this.ruleForm.url = 'http://otj3hc8no.bkt.clouddn.com/'+ res.key;
             },
             progressUpload(event, file, fileList){
                 this.imagePercente = event.percent;

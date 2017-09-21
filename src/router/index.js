@@ -60,6 +60,14 @@ export default new Router({
                 {
                     path: 'system/config',
                     component: resolve => require(['../components/admin/page/system/config.vue'], resolve)
+                },
+                {
+                    path: 'system/version',
+                    component: resolve => require(['../components/admin/page/system/version/list.vue'], resolve)
+                },
+                {
+                    path: 'system/version/add',
+                    component: resolve => require(['../components/admin/page/system/version/add.vue'], resolve)
                 }
             ]
         },

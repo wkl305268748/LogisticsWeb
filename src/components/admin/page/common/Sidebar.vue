@@ -66,6 +66,10 @@
                             {
                                 index: '/admin/home/system/defind',
                                 title: '条目管理'
+                            },
+                            {
+                                index: '/admin/home/system/version',
+                                title: 'App版本配置'
                             }
                         ]
                     }
