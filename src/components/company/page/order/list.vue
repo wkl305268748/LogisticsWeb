@@ -63,10 +63,12 @@
                 </el-table-column>
 
                 <el-table-column
-                    label="合同" width="80">
+                    label="单据打印" width="180">
                     <template scope="scope">
-                        <el-row v-if="scope.row.order.status =='ORDER_TAKING' || scope.row.order.status =='ORDER_SIGN'"  type="flex" justify="space-around">
-                            <el-button type="info" icon="plus" size="small" @click="contract(scope.row.order.id)">查看</el-button>
+                        <el-row v-if="scope.row.order.status =='ORDER_TAKING' || scope.row.order.status =='ORDER_SIGN'" >
+                            <p style="margin-top: 10px"><el-button  icon="plus" size="small" @click="contract(scope.row.order.id)">打印合同</el-button></p>
+                            <p style="margin-top: 5px"><el-button type="info" icon="plus" size="small" @click="printOrder(scope.row.order.id)">打印托运单</el-button></p>
+                            <p style="margin-top: 5px; margin-bottom: 10px"><el-button type="info" icon="plus" size="small" @click="printTaking(scope.row.order.id)">打印派车单</el-button></p>
                         </el-row>
                         <div v-else>
                             <el-tag type="gray" >未处理</el-tag>
@@ -234,6 +236,22 @@
             contract(id){
                 this.$router.push({
                     path:'/company/home/order/contract',
+                    query:{
+                        id: id
+                    },
+                });
+            },
+            printOrder(id){
+                this.$router.push({
+                    path:'/company/home/order/print',
+                    query:{
+                        id: id
+                    },
+                });
+            },
+            printTaking(id){
+                this.$router.push({
+                    path:'/company/home/order/taking/print',
                     query:{
                         id: id
                     },

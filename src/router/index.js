@@ -112,8 +112,16 @@ export default new Router({
                     component: resolve => require(['../components/company/page/order/info.vue'], resolve)
                 },
                 {
+                    path: 'order/print',
+                    component: resolve => require(['../components/company/page/order/print.vue'], resolve)
+                },
+                {
                     path: 'order/taking',
                     component: resolve => require(['../components/company/page/order/taking/add.vue'], resolve)
+                },
+                {
+                    path: 'order/taking/print',
+                    component: resolve => require(['../components/company/page/order/taking/print.vue'], resolve)
                 },
                 {
                     path: 'profit',
