@@ -1,6 +1,6 @@
 <template>
     <div class="header">
-        <div class="logo"><img src="../../assets/logo.png" style="width: 170px; margin: 10px"></div>
+        <div class="logo"><img src="../../../public/assets/logo.png" style="width: 170px; margin: 10px"></div>
         <div class="user-info">
             <el-dropdown trigger="click" @command="handleCommand">
                 <span class="el-dropdown-link">
