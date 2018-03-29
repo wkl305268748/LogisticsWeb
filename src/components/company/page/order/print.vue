@@ -12,7 +12,7 @@
     </el-row>
 </template>
 <script>
-    import OrderTakingPrintPage from "../../../public/order/OrderPrintPage.vue";
+    import OrderTakingPrintPage from "../../../public/order/OrderPrintCoverPage.vue";
 
     export default {
         components: {
