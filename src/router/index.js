@@ -124,6 +124,10 @@ export default new Router({
                     component: resolve => require(['../components/company/page/order/taking/print.vue'], resolve)
                 },
                 {
+                    path: 'order/taking/print_label',
+                    component: resolve => require(['../components/company/page/order/taking/print_label.vue'], resolve)
+                },
+                {
                     path: 'profit',
                     component: resolve => require(['../components/company/page/profit/list.vue'], resolve)
                 },

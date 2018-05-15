@@ -69,6 +69,7 @@
                             <p style="margin-top: 10px"><el-button  icon="plus" size="small" @click="contract(scope.row.order.id)">打印合同</el-button></p>
                             <p style="margin-top: 5px"><el-button type="info" icon="plus" size="small" @click="printOrder(scope.row.order.id)">打印托运单</el-button></p>
                             <p style="margin-top: 5px; margin-bottom: 10px"><el-button type="info" icon="plus" size="small" @click="printTaking(scope.row.order.id)">打印派车单</el-button></p>
+                            <p style="margin-top: 5px; margin-bottom: 10px"><el-button type="info" icon="plus" size="small" @click="printLabel(scope.row.order.id)">打印小单</el-button></p>
                         </el-row>
                         <div v-else>
                             <el-tag type="gray" >未处理</el-tag>
@@ -252,6 +253,14 @@
             printTaking(id){
                 this.$router.push({
                     path:'/company/home/order/taking/print',
+                    query:{
+                        id: id
+                    },
+                });
+            },
+            printLabel(id){
+                this.$router.push({
+                    path:'/company/home/order/taking/print_label',
                     query:{
                         id: id
                     },
