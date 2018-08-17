@@ -39,7 +39,7 @@
                         <el-button-group>
                             <el-button type="primary" @click="showDialog('recive',scope.row)" icon="caret-left" size="small" v-if="!scope.row.is_recive">收款
                             </el-button>
-                            <el-button type="danger" @click="showDialog('pay',scope.row)" icon="caret-right" size="small" v-if="!scope.row.is_pay">付款
+                            <el-button type="danger" @click="onPay(scope.row.id)" icon="caret-right" size="small" v-if="!scope.row.is_pay">付款
                             </el-button>
                         </el-button-group>
                     </template>
@@ -144,11 +144,18 @@
                     this.fetchData();
                 });
             },
-            pay(){
+            onPay(id){
+                /*
                 this.payForm.pay = this.payDialog.pay_now;
                 addPay(this.payDialog.id,this.payForm).then(response => {
                     this.payDialog.isDialog = false;
                     this.fetchData();
+                });*/
+                this.$router.push({
+                    path:'/company/home/profit/pay',
+                    query:{
+                        id: id
+                    },
                 });
             },
             showDialog(type,row){

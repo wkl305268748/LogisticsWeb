@@ -51,7 +51,14 @@
                     </el-col>
                     <el-col :span="8" >
                         <el-form-item label="开户行">
-                            <el-input v-model="ruleForm.bank_addr" placeholder="银行卡开户行地址"></el-input>
+                            <el-select v-model="ruleForm.bank_addr" clearable placeholder="请选择">
+                                <el-option
+                                    v-for="item in bank_list"
+                                    :key="item.name"
+                                    :label="item.name"
+                                    :value="item.name">
+                                </el-option>
+                            </el-select>
                         </el-form-item>
                     </el-col>
                 </el-row>
@@ -294,6 +301,7 @@
                     other_license:[],
                     token: localStorage.getItem('company_token')
                 },
+                bank_list: [],
                 rules: {
                     name: [
                         {required: true, message: '请输姓名'},
@@ -327,6 +335,9 @@
             fetchData() {
                 getDefindAll({type_code:'driver_level'}).then(response => {
                     this.driver_level = response.data;
+                });
+                getDefindAll({type_code:'bank_list'}).then(response => {
+                    this.bank_list = response.data;
                 });
                 getDefindAll({type_code:'driver_license_type'}).then(response => {
                     this.driver_license_type = response.data;

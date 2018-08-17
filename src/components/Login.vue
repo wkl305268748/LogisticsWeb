@@ -1,6 +1,6 @@
 <template>
     <div class="login-wrap" >
-        <div class="ms-title">欢迎使用蓝云tms系统</div>
+        <div class="ms-title">欢迎使用tms系统</div>
         <div class="ms-login"  v-loading.body="listLoading" element-loading-text="正在登录中">
 
             <template>

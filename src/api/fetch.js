@@ -5,6 +5,7 @@ import { Message } from 'element-ui';
 const service = axios.create({
     //baseURL: 'http://localhost:82', // api的base_url
     baseURL: 'http://www.ahly56.com:82', // api的base_url
+    //baseURL: 'http://www.feitong56.cn:82', // api的base_url
     timeout: 5000                  // 请求超时时间
 });
 

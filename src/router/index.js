@@ -100,6 +100,10 @@ export default new Router({
                     component: resolve => require(['../components/company/page/order/contract/info.vue'], resolve)
                 },
                 {
+                    path: 'order/add',
+                    component: resolve => require(['../components/company/page/order/customer/add.vue'], resolve)
+                },
+                {
                     path: 'order',
                     component: resolve => require(['../components/company/page/order/list.vue'], resolve)
                 },
@@ -130,6 +134,10 @@ export default new Router({
                 {
                     path: 'profit',
                     component: resolve => require(['../components/company/page/profit/list.vue'], resolve)
+                },
+                {
+                    path: 'profit/pay',
+                    component: resolve => require(['../components/company/page/profit/pay.vue'], resolve)
                 },
                 {
                     path: 'system/config',

@@ -8,6 +8,14 @@ export function getProfitList(params) {
     });
 }
 
+export function getProfit(id,params) {
+    return fetch({
+        url: '/v1/profit/' + id,
+        method: 'get',
+        params
+    });
+}
+
 export function addRecive(id,params) {
     return fetch({
         url: '/v1/profit/recive/' + id,
@@ -18,6 +26,22 @@ export function addRecive(id,params) {
 export function addPay(id,params) {
     return fetch({
         url: '/v1/profit/pay/' + id,
+        method: 'put',
+        params
+    });
+}
+
+export function getPayCard(id,params) {
+    return fetch({
+        url: '/v1/profit/pay/card/' + id,
+        method: 'get',
+        params
+    });
+}
+
+export function addPayCard(id,params) {
+    return fetch({
+        url: '/v1/profit/pay/card/' + id,
         method: 'put',
         params
     });

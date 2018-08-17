@@ -46,6 +46,11 @@
                     },
                     {
                         icon: 'el-icon-star-off',
+                        index: '/company/home/order/add',
+                        title: '创建运单',
+                    },
+                    {
+                        icon: 'el-icon-star-off',
                         index: '/company/home/order_open',
                         title: '抢单市场',
                     },
