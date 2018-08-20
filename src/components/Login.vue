@@ -4,9 +4,8 @@
         <div class="ms-login"  v-loading.body="listLoading" element-loading-text="正在登录中">
 
             <template>
-                <el-radio class="radio" v-model="type" label="customer">客户</el-radio>
-                <el-radio class="radio" v-model="type" label="company">物流公司</el-radio>
-                <el-radio class="radio" v-model="type" label="admin">管理员</el-radio>
+                <el-radio class="radio" v-model="type" label="company">用户</el-radio>
+                <el-radio class="radio" v-model="type" style="float:right" label="admin">管理员</el-radio>
             </template>
             <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="0px" class="demo-ruleForm" style="margin-top: 30px">
                 <el-form-item prop="username">
@@ -20,7 +19,6 @@
                 </div>
 
                 <el-row style="margin-top: 20px">
-                    <el-col :span="12" v-if="type === 'customer'"><el-button type="text" @click="onRegister">新用户注册</el-button></el-col>
                     <el-col :span="12"><el-button type="text" @click="onPasswrod">忘记密码？</el-button></el-col>
                 </el-row>
             </el-form>
@@ -61,7 +59,7 @@
     export default {
         data: function(){
             return {
-                type:'customer',
+                type:'company',
                 ruleForm: {
                     username: '',
                     password: ''
