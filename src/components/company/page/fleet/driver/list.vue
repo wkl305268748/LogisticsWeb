@@ -79,7 +79,7 @@
                     <template scope="scope">
 
                             <el-button-group>
-                                <!--<el-button type="primary" icon="edit" size="small">编辑</el-button>-->
+                                <el-button type="primary" @click="editData(scope.row.fleetDriver.id)"  icon="edit" size="small">编辑</el-button>
                                 <!--<el-button type="warning" icon="setting" size="small">重置密码</el-button>-->
                                 <el-button type="danger" @click="deleteData(scope.row.fleetDriver.id)" icon="delete" size="small">删除</el-button>
                             </el-button-group>
@@ -148,6 +148,14 @@
             },
             createData(){
                 this.$router.push('/company/home/driver/add');
+            },
+            editData(id){
+                this.$router.push({
+                    path:'/company/home/driver/edit',
+                    query:{
+                        id: id
+                    },
+                });
             },
             handleSizeChange(val) {
                 this.listQuery.pageSize = val;

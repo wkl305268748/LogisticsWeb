@@ -107,7 +107,7 @@
                     <template scope="scope">
 
                             <el-button-group>
-                                <!--<el-button type="primary" icon="edit" size="small">编辑</el-button>-->
+                                <el-button type="primary" @click="editData(scope.row.fleetCar.id)" icon="edit" size="small">编辑</el-button>
                                 <el-button type="danger" @click="deleteData(scope.row.fleetCar.id)" icon="delete" size="small">删除</el-button>
                             </el-button-group>
                     </template>
@@ -175,6 +175,14 @@
             },
             createData(){
                 this.$router.push('/company/home/car/add');
+            },
+            editData(id){
+                this.$router.push({
+                    path:'/company/home/car/edit',
+                    query:{
+                        id: id
+                    },
+                });
             },
             handleSizeChange(val) {
                 this.listQuery.pageSize = val;

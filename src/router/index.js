@@ -88,12 +88,20 @@ export default new Router({
                     component: resolve => require(['../components/company/page/fleet/driver/add.vue'], resolve)
                 },
                 {
+                    path: 'driver/edit',
+                    component: resolve => require(['../components/company/page/fleet/driver/edit.vue'], resolve)
+                },
+                {
                     path: 'car',
                     component: resolve => require(['../components/company/page/fleet/car/list.vue'], resolve)
                 },
                 {
                     path: 'car/add',
                     component: resolve => require(['../components/company/page/fleet/car/add.vue'], resolve)
+                },
+                {
+                    path: 'car/edit',
+                    component: resolve => require(['../components/company/page/fleet/car/edit.vue'], resolve)
                 },
                 {
                     path: 'order/contract',
