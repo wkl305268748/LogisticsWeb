@@ -15,6 +15,15 @@ export function getCustomerAll(params) {
     });
 }
 
+
+export function getOrderCompanyMoney() {
+    return fetch({
+        url: '/v1/order/count/order/company/money',
+        method: 'get'
+    });
+}
+
+
 export function getOrderCompany() {
     return fetch({
         url: '/v1/order/count/order/company',
@@ -53,3 +62,5 @@ export function getCompanyOrderDay7(params) {
         params
     });
 }
+
+

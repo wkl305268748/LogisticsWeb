@@ -47,8 +47,8 @@
                         <el-row>
                             <el-col :span="2"><div style="height:80px; background:#f1c40f"></div></el-col>
                             <el-col :span="16" style="padding: 10px">
-                                <p>总已签收订单数：</p>
-                                <p style="margin-top:10px; font-size:25px;"><router-link to="/admin/home/order" style="color:#50bfff">{{all.order_sign}}</router-link></p>
+                                <p>平台总运费金额：</p>
+                                <p style="margin-top:10px; font-size:25px;"><router-link to="/admin/home/order" style="color:#50bfff">{{all.order_all_money}} 元</router-link></p>
                             </el-col>
                         </el-row>
                     </el-card>
@@ -77,7 +77,7 @@
 </template>
 
 <script>
-    import { getAll,getOrderCompany,getOrderDay7 } from '@/api/order/count.js'
+    import { getAll,getOrderCompany,getOrderCompanyMoney,getOrderDay7 } from '@/api/order/count.js'
     import echarts from 'echarts'
     require('echarts/theme/macarons');
 
@@ -147,13 +147,13 @@
                 });
             },
             initCustomerOrder(){
-                getOrderCompany().then(response => {
+                getOrderCompanyMoney().then(response => {
                     this.order_customer = response.data;
 
                     var myChart = echarts.init(document.getElementById('customer_order'),'macarons');
                     // 绘制图表
                     myChart.setOption({
-                        title: { text: '所有客户订单统计' },
+                        title: { text: '物流公司运费总额TOP10' },
                         tooltip : {
                             trigger: 'axis',
                             axisPointer : {            // 坐标轴指示器，坐标轴触发有效
@@ -161,7 +161,7 @@
                             }
                         },
                         legend: {
-                            data: ['拒绝订单', '待处理订单', '已处理订单','已签收订单']
+                            data: ['运费总额']
                         },
                         grid: {
                             left: '3%',
@@ -178,7 +178,7 @@
                         },
                         series: [
                             {
-                                name: '拒绝订单',
+                                name: '运费总额',
                                 type: 'bar',
                                 stack: '总量',
                                 label: {
@@ -187,44 +187,8 @@
                                         position: 'insideRight'
                                     }
                                 },
-                                data: this.order_customer.refuseOrder
+                                data: this.order_customer.orderMoney
                             },
-                            {
-                                name: '待处理订单',
-                                type: 'bar',
-                                stack: '总量',
-                                label: {
-                                    normal: {
-                                        show: true,
-                                        position: 'insideRight'
-                                    }
-                                },
-                                data: this.order_customer.placeOrder
-                            },
-                            {
-                                name: '已处理订单',
-                                type: 'bar',
-                                stack: '总量',
-                                label: {
-                                    normal: {
-                                        show: true,
-                                        position: 'insideRight'
-                                    }
-                                },
-                                data: this.order_customer.takingOrder
-                            },
-                            {
-                                name: '已签收订单',
-                                type: 'bar',
-                                stack: '总量',
-                                label: {
-                                    normal: {
-                                        show: true,
-                                        position: 'insideRight'
-                                    }
-                                },
-                                data: this.order_customer.signOrder
-                            }
                         ]
                     });
 
